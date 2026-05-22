@@ -2,7 +2,7 @@
 
 下面是一套完整方案：在 **Windows 电脑 + WSL 终端** 中运行命令，命令结束后弹出 **Windows 右下角通知**。适合在 WSL 里配置环境变量、激活 conda/venv，然后运行 Python 训练、测试、脚本等任务。
 
-一、安装 Windows 通知模块
+## 一、安装 Windows 通知模块
 
 在 **Windows PowerShell** 里执行，不是在 WSL 里：
 
@@ -18,7 +18,7 @@ Install-Module -Name BurntToast -Scope CurrentUser
 
 如果能输出 `hello`，继续下一步。
 
-二、在 WSL 的 `.bashrc` 里添加 `nt` 函数
+## 二、在 WSL 的 `.bashrc` 里添加 `nt` 函数
 
 编辑 WSL 的 Bash 配置：
 
@@ -56,7 +56,7 @@ New-BurntToastNotification -Text 'Task Done.', \"cmd: \$cmdText\", \"code: \$sta
 source ~/.bashrc
 ```
 
-三、基本用法
+## 三、基本用法
 
 你的命令正常写，后面加：
 
@@ -92,7 +92,7 @@ code: 0
 
 表示命令成功结束。非 0 通常表示命令失败或异常退出。
 
-四、适合你的日常工作流
+## 四、适合你的日常工作流
 
 例如你经常先配置变量、激活环境，再运行 Python：
 
@@ -105,7 +105,7 @@ python train.py --config configs/a.yaml; nt train demo
 
 这个方案不会接管 Python 命令的执行。`python train.py ...` 仍然在当前 WSL shell、当前 conda 环境、当前环境变量下正常运行。`nt` 只是在它结束之后读取退出码并发送通知。
 
-五、测试
+## 五、测试
 
 创建一个简单测试文件：
 
